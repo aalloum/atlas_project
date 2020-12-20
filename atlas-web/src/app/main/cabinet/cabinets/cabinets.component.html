@@ -1,0 +1,94 @@
+<div id="cabinets" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent"
+             fxLayout="column" fxLayoutAlign="center center"
+             fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0"
+                 fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Cabinets
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <div class="search-wrapper ml-sm-32">
+                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center" style="width: 100%;">
+                    <mat-icon>search</mat-icon>
+                    <input #filter placeholder="Search for a Cabinet">
+                </div>
+            </div>
+            <!-- / SEARCH -->
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <mat-table class="cabinets-table"
+                       #table [dataSource]="dataSource"
+                       matSort
+                       [@animateStagger]="{value:'50'}"
+                       fusePerfectScrollbar>
+
+                <!-- nameCabinet -->
+                <ng-container matColumnDef="nameCabinet">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Nom Cabinet</mat-header-cell>
+                    <mat-cell *matCellDef="let cabinet" fxHide fxShow.gt-sm>
+                        <p class="text-truncate">{{cabinet.nameCabinet}}</p>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="identifiantFiscal">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Identifiant Fiscal</mat-header-cell>
+                    <mat-cell *matCellDef="let cabinet" fxHide fxShow.gt-sm>
+                        <p class="text-truncate">{{cabinet.identifiantFiscal}}</p>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="activitePrincipale">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Activite Principale</mat-header-cell>
+                    <mat-cell *matCellDef="let cabinet" fxHide fxShow.gt-sm>
+                        <p class="text-truncate">{{cabinet.activitePrincipale}}</p>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="ville">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Ville</mat-header-cell>
+                    <mat-cell *matCellDef="let cabinet" fxHide fxShow.gt-sm>
+                        <p class="text-truncate">{{cabinet.ville}}</p>
+                    </mat-cell>
+                </ng-container>
+
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+                <mat-row *matRowDef="let cabinet; columns: displayedColumns;"
+                         class="cabinet"
+                         matRipple
+                         [routerLink]="'/cabinets/cabinets/'+cabinet.id">
+                </mat-row>
+            </mat-table>
+
+            <mat-paginator #paginator
+                           [length]="dataSource.filteredData.length"
+                           [pageIndex]="0"
+                           [pageSize]="10"
+                           [pageSizeOptions]="[5, 10, 25, 100]">
+            </mat-paginator>
+
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

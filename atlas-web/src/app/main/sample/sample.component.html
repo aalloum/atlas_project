@@ -1,0 +1,32 @@
+<div class="page-layout blank p-24" fusePerfectScrollbar>
+
+    <h2>{{'SAMPLE.HELLO' | translate}}</h2>
+
+    <!-- ADD FILE BUTTON -->
+    <div class="file-uploader">
+        <input hidden type="file" #fileInput (change)="onFileChange($event)"/>
+        <button mat-fab
+                color="warn"
+                class="add-file-button"
+                (click)="fileInput.click()"
+                aria-label="Add file"
+                [@animate]="{value:'*', params:{delay:'300ms',scale:'0.2'}}">
+            <mat-icon>add</mat-icon>
+        </button>
+        <span>ADD FILE</span>
+    </div>
+    <!-- / ADD FILE BUTTON -->
+    <table>
+        <tbody>
+        <tr *ngFor="let row of data">
+            <td *ngFor="let cell of row">
+                {{cell}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--<input type="file" (change)="onFileChange($event)" multiple="false" />-->
+
+

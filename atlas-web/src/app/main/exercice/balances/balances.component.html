@@ -1,0 +1,51 @@
+<app-balance></app-balance>
+<div style="width: 100%">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+        <ng-container matColumnDef="compte">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Compte</th>
+            <td mat-cell *matCellDef="let element"> {{element.compte}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="intituleCompte">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Intitulé compte</th>
+            <td mat-cell *matCellDef="let element"> {{element.intituleCompte}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="soldeInitialDebit">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Solde initial Débit</th>
+            <td mat-cell *matCellDef="let element"> {{element.soldeInitialDebit}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="soldeInitialCredit">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Solde initial Crédit</th>
+            <td mat-cell *matCellDef="let element"> {{element.soldeInitialCredit}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="mouvementDebit">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Mouvement Débit</th>
+            <td mat-cell *matCellDef="let element"> {{element.mouvementDebit}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="mouvementCredit">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Mouvement Crédit</th>
+            <td mat-cell *matCellDef="let element"> {{element.mouvementCredit}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="soldeDebit">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Solde débit</th>
+            <td mat-cell *matCellDef="let element"> {{element.soldeDebit}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="soldeCredit">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Solde crédit</th>
+            <td mat-cell *matCellDef="let element"> {{element.soldeCredit}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="'/exercices/exercices/'"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[100, 150, 200]" showFirstLastButtons></mat-paginator>
+</div>

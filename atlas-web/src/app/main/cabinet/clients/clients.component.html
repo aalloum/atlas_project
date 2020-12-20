@@ -1,0 +1,147 @@
+<div id="clients" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent"
+             fxLayout="column" fxLayoutAlign="center center"
+             fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0"
+                 fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    shopping_basket
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Clients
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <div class="search-wrapper mx-32 mx-md-0">
+                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon>search</mat-icon>
+                    <input #filter placeholder="Search for a comptable">
+                </div>
+            </div>
+            <!-- / SEARCH -->
+
+            <!-- ADD BUTTON -->
+            <button mat-raised-button
+                    [routerLink]="'/cabinets/clients/new'"
+                    class="add-client-button fuse-white mt-24 mt-md-0">
+                <span>ADD NEW CLIENT</span>
+            </button>
+            <!-- / ADD BUTTON -->
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div >
+
+            <mat-table class="clients-table"
+                       #table [dataSource]="dataSource"
+                       matSort
+                       [@animateStagger]="{value:'50'}"
+                       fusePerfectScrollbar>
+
+                <ng-container matColumnDef="denomination">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Denomination</mat-header-cell>
+                    <mat-cell *matCellDef="let client">
+                        <p class="text-truncate">{{client.denomination}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="identifiantFiscal">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Identifiant Fiscal</mat-header-cell>
+                    <mat-cell *matCellDef="let client">
+                        <p class="text-truncate">{{client.identifiantFiscal}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="activitePrincipale">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Activite Principale</mat-header-cell>
+                    <mat-cell *matCellDef="let client">
+                        <p class="text-truncate">{{client.activitePrincipale}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="formeJuridique">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Forme Juridique</mat-header-cell>
+                    <mat-cell *matCellDef="let client">
+                        <p class="text-truncate">{{client.formeJuridique}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="regime">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Regime</mat-header-cell>
+                    <mat-cell *matCellDef="let client">
+                        <p class="text-truncate">{{client.regime}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="numeroRegistreCommerce">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Numero Registre Commerce</mat-header-cell>
+                    <mat-cell *matCellDef="let client">
+                        <p class="text-truncate">{{client.numeroRegistreCommerce}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="numeroCNSS">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Numero CNSS</mat-header-cell>
+                    <mat-cell *matCellDef="let client">
+                        <p class="text-truncate">{{client.numeroCNSS}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="numeroTaxeProfessionnelle">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Numero Taxe Professionnelle</mat-header-cell>
+                    <mat-cell *matCellDef="let client">
+                        <p class="text-truncate">{{client.numeroTaxeProfessionnelle}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="numeroICE">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Numero ICE</mat-header-cell>
+                    <mat-cell *matCellDef="let client">
+                        <p class="text-truncate">{{client.numeroICE}}</p>
+                    </mat-cell>
+                </ng-container>
+
+
+
+
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+                <mat-row *matRowDef="let comptable; columns: displayedColumns;"
+                         class="comptable"
+                         matRipple
+                         [routerLink]="'/cabinets/clients/'+comptable.id">
+                    <!--                         [routerLink]="'/e-commerce/products/'+product.id+'/'+product.handle">-->
+                </mat-row>
+
+            </mat-table>
+
+            <mat-paginator #paginator
+                           [length]="dataSource.filteredData.length"
+                           [pageIndex]="0"
+                           [pageSize]="10"
+                           [pageSizeOptions]="[5, 10, 25, 100]">
+            </mat-paginator>
+
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>
+
+

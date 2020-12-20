@@ -1,0 +1,176 @@
+<div id="cabinet" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent"
+             fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <button mat-icon-button class="mr-16" [routerLink]="'/cabinets/cabinets'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <div fxLayout="column" fxLayoutAlign="start start"
+                     [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2">
+                        Cabinet {{cabinet.nameCabinet}}
+                    </div>
+                </div>
+            </div>
+            <!-- / APP TITLE -->
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <mat-tab-group fxLayout="column" fxFlex>
+
+                    <mat-tab label="Cabinet Details">
+
+                        <div class="cabinet tab-content p-24" fusePerfectScrollbar>
+
+                            <div id="cabinet" class="compact page-layout blank" fxLayout="row" fusePerfectScrollbar>
+
+                                <div class="cabinet-container">
+
+                                    <div class="card">
+
+
+                                <div class="pb-16" fxLayout="row" fxLayoutAlign="start center">
+                                    <mat-icon class="m-0 mr-16 secondary-text">account_circle</mat-icon>
+                                    <div class="h2 secondary-text">Cabinet: {{cabinet.nameCabinet}}</div>
+                                </div>
+
+                                <!-- cabinet -->
+
+                                    <div class="header">
+                                        <div fxLayout="row" fxLayoutAlign="space-between stretch">
+                                            <div class="client">
+                                                <div class="cabinet-number" fxLayout="row"
+                                                     fxLayoutAlign="start center">
+                                                    <span class="title">Identifiant Fiscal: </span>
+                                                    <span class="number">{{cabinet.identifiantFiscal}}</span>
+                                                </div>
+                                                <div class="cabinet-number" fxLayout="row"
+                                                     fxLayoutAlign="start center">
+                                                    <span class="title">Activite Principale: </span>
+                                                    <span class="number">{{cabinet.activitePrincipale}}</span>
+                                                </div>
+                                                <div class="cabinet-number" fxLayout="row"
+                                                     fxLayoutAlign="start center">
+                                                    <span class="title">Regime: </span>
+                                                    <span class="number">{{cabinet.regime}}</span>
+                                                </div>
+                                                <div class="cabinet-number" fxLayout="row"
+                                                     fxLayoutAlign="start center">
+                                                    <span class="title">N° Registre Commerce: </span>
+                                                    <span class="number">{{cabinet.numeroRegistreCommerce}}</span>
+                                                </div>
+                                                <div class="cabinet-number" fxLayout="row"
+                                                     fxLayoutAlign="start center">
+                                                    <span class="title">N° CNSS: </span>
+                                                    <span class="number">{{cabinet.numeroCNSS}}</span>
+                                                </div>
+                                                <div class="cabinet-number" fxLayout="row"
+                                                     fxLayoutAlign="start center">
+                                                    <span class="title">N° Taxe Professionnelle: </span>
+                                                    <span class="number">{{cabinet.numeroTaxeProfessionnelle}}</span>
+                                                </div>
+                                                <div class="cabinet-number" fxLayout="row"
+                                                     fxLayoutAlign="start center">
+                                                    <span class="title">N° ICE: </span>
+                                                    <span class="number">{{cabinet.numeroICE}}</span>
+                                                </div>
+                                                <div class="cabinet-number" fxLayout="row"
+                                                     fxLayoutAlign="start center">
+                                                    <span class="title">Forme Juridique: </span>
+                                                    <span class="number">{{cabinet.formeJuridique}}</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="issuer accent" fxLayout="row" fxLayoutAlign="start center">
+                                                <div class="logo">
+                                                    <img src="../../../../../assets/images/logos/fuse.svg">
+                                                </div>
+
+                                                <div class="info">
+                                                    <div class="title">
+                                                        <span>Telephone: </span>
+                                                        <span>{{cabinet.telephone}}</span>
+                                                    </div>
+                                                    <div class="title">
+                                                        <span>Fax: </span>
+                                                        <span>{{cabinet.fax}}</span>
+                                                    </div>
+                                                    <div class="title">
+                                                        <span>Email: </span>
+                                                        <span>{{cabinet.email}}</span>
+                                                    </div>
+                                                    <div class="title">
+                                                        <span>R.I.B: </span>
+                                                        <span>{{cabinet.rib}}</span>
+                                                    </div>
+                                                    <div class="title">
+                                                        <span>Banque: </span>
+                                                        <span>{{cabinet.banque}}</span>
+                                                    </div>
+                                                    <div class="title">
+                                                        <span>Agence: </span>
+                                                        <span>{{cabinet.agence}}</span>
+                                                    </div>
+                                                    <div class="title">
+                                                        <span>Ville: </span>
+                                                        <span>{{cabinet.ville}}</span>
+                                                    </div>
+                                                    <div class="title">
+                                                        <span>Adresse: </span>
+                                                        <span>{{cabinet.adresse}}</span>
+                                                    </div>
+                                                    <div class="title">
+                                                        <span>Code Postal: </span>
+                                                        <span>{{cabinet.codePostal}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- / cabinet -->
+
+
+
+                            </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+
+                    <mat-tab label="Comptables">
+                           <app-cabinet-comptables [cabinetId] = "cabinet.id"></app-cabinet-comptables>
+                    </mat-tab>
+                    <mat-tab label="Clients">
+                           <app-cabinet-clients [cabinetId] = "cabinet.id"></app-cabinet-clients>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+</div>
+

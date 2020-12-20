@@ -1,0 +1,13 @@
+<!--<div class="page-layout blank p-24" fusePerfectScrollbar>-->
+    <div class="file-uploader">
+        <input hidden type="file" #fileInput (change)="onFileChange($event)"/>
+        <button mat-fab
+                color="warn"
+                class="add-file-button"
+                (click)="fileInput.click()"
+                aria-label="Add file"
+                [@animate]="{value:'*', params:{delay:'300ms',scale:'0.2'}}">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+<!--</div>-->

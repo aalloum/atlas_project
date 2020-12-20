@@ -1,0 +1,54 @@
+<div class="search-div">
+    <button mat-raised-button [routerLink]="'/cabinets/cmptbles/addComptable/' + cabinetId">
+        <mat-icon>add</mat-icon>
+        Create
+    </button>
+    <mat-form-field class="search-form-field" floatLabel="never" style ="right:-10px;">
+        <input matInput (keyup)="applyFilter(myInput.value)" placeholder="Search" id="idFiltre" #myInput/>
+    </mat-form-field>
+</div>
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" #myTable>
+
+        <ng-container matColumnDef="firstName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Prenom</th>
+            <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lastName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom</th>
+            <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="matricule">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Matricule</th>
+            <td mat-cell *matCellDef="let element"> {{element.matricule}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actived">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Comptable Active</th>
+            <td mat-cell *matCellDef="let element">
+                <mat-icon *ngIf="element.actived" class="active-icon green-600 s-16">check</mat-icon>
+                <mat-icon *ngIf="!element.actived" class="active-icon red-500 s-16">close</mat-icon>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element" class="action-link">
+                <button mat-icon-button [routerLink]="'/cabinets/comptables/editComptable/'+element.id" >
+                    <mat-icon>launch</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteComptable(element.id)">
+                    <mat-icon>delete_outline</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[25, 50, 100]" showFirstLastButtons></mat-paginator>
+</div>
+

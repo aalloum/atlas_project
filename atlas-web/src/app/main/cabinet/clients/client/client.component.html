@@ -1,0 +1,210 @@
+<div id="client" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/cabinets/clients'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <div fxLayout="column" fxLayoutAlign="start start"
+                     [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" *ngIf="pageType ==='edit'">
+                        {{client.denomination}} - {{client.identifiantFiscal}}
+                    </div>
+                    <div class="h2" *ngIf="pageType ==='new'">
+                        New Client
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>Client Detail</span>
+                    </div>
+                </div>
+            </div>
+            <!-- / APP TITLE -->
+
+            <button mat-raised-button
+                    class="save-product-button"
+                    [disabled]="clientForm.invalid"
+                    *ngIf="pageType ==='new'" (click)="addClient()">
+                <span>ADD</span>
+            </button>
+
+            <button mat-raised-button
+                    class="save-product-button"
+                    [disabled]="clientForm.invalid || clientForm.pristine"
+                    *ngIf="pageType ==='edit'" (click)="saveClient()">
+                <span>SAVE</span>
+            </button>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+
+                <form name="clientForm" [formGroup]="clientForm" class="client w-100-p" fxLayout="column" fxFlex>
+                    <mat-tab-group>
+                        <mat-tab label="Basic Info">
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Denomination</mat-label>
+                                    <input matInput placeholder="denomination"
+                                           name="denomination"
+                                           formControlName="denomination"
+                                           required>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Identifiant Fiscal</mat-label>
+                                    <input matInput placeholder="Identifiant Fiscal"
+                                           name="identifiantFiscal"
+                                           formControlName="identifiantFiscal"
+                                           required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Activite Principale</mat-label>
+                                    <input matInput placeholder="Activite Principale"
+                                           name="activitePrincipale"
+                                           formControlName="activitePrincipale"
+                                           required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Forme Juridique</mat-label>
+                                    <input matInput placeholder="Activite Principale"
+                                           name="formeJuridique"
+                                           formControlName="formeJuridique"
+                                           required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Regime</mat-label>
+                                    <input matInput placeholder="Regime"
+                                           name="regime"
+                                           formControlName="regime"
+                                           required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Numero Registre Commerce</mat-label>
+                                    <input matInput placeholder="Numero Registre Commerce"
+                                           name="numeroRegistreCommerce"
+                                           formControlName="numeroRegistreCommerce"
+                                           required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Numero CNSS</mat-label>
+                                    <input matInput placeholder="Numero CNSS"
+                                           name="numeroCNSS"
+                                           formControlName="numeroCNSS"
+                                           required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Numero Taxe Professionnelle</mat-label>
+                                    <input matInput placeholder="Numero Taxe Professionnelle"
+                                           name="numeroTaxeProfessionnelle"
+                                           formControlName="numeroTaxeProfessionnelle"
+                                           required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Numero ICE</mat-label>
+                                    <input matInput placeholder="Numero ICE"
+                                           name="numeroICE"
+                                           formControlName="numeroICE"
+                                           required>
+                                </mat-form-field>
+                            </div>
+                        </mat-tab>
+
+                        <mat-tab label="Coordonnées">
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Telephone</mat-label>
+                                    <input matInput placeholder="Telephone"
+                                           name="telephone"
+                                           formControlName="telephone"
+                                           required>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Fax</mat-label>
+                                    <input matInput placeholder="Fax"
+                                           name="fax"
+                                           formControlName="fax"
+                                           required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput placeholder="Email"
+                                           name="email"
+                                           formControlName="email"
+                                           required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>R.I.B</mat-label>
+                                    <input matInput placeholder="R.I.B"
+                                           name="rib"
+                                           formControlName="rib"
+                                           required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Banque</mat-label>
+                                    <input matInput placeholder="Banque"
+                                           name="banque"
+                                           formControlName="banque"
+                                           required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Aence</mat-label>
+                                    <input matInput placeholder="Agence"
+                                           name="agence"
+                                           formControlName="agence"
+                                           required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Ville</mat-label>
+                                    <input matInput placeholder="Ville"
+                                           name="ville"
+                                           formControlName="ville"
+                                           required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Code Postal</mat-label>
+                                    <input matInput placeholder="Code Postal"
+                                           name="codePostal"
+                                           formControlName="codePostal"
+                                           required>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                                    <mat-label>Adresse</mat-label>
+                                    <input matInput placeholder="Adresse"
+                                           name="adresse"
+                                           formControlName="adresse"
+                                           required>
+                                </mat-form-field>
+                            </div>
+                        </mat-tab>
+
+                    </mat-tab-group>
+
+                </form>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

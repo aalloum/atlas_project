@@ -1,0 +1,63 @@
+<div class="search-div">
+    <button mat-raised-button [routerLink]="'/cabinets/clints/addClient/' + cabinetId">
+        <mat-icon>add</mat-icon>
+        Create
+    </button>
+    <mat-form-field class="search-form-field" floatLabel="never" style ="right:-10px;">
+        <input matInput (keyup)="applyFilter(myInput.value)" placeholder="Search" id="idFiltre" #myInput/>
+    </mat-form-field>
+</div>
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="denomination">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Denomination</th>
+            <td mat-cell *matCellDef="let element"> {{element.denomination}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="identifiantFiscal">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Identifiant Fiscal</th>
+            <td mat-cell *matCellDef="let element"> {{element.identifiantFiscal}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="activitePrincipale">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Activité Principale</th>
+            <td mat-cell *matCellDef="let element"> {{element.activitePrincipale}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ville">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Ville</th>
+            <td mat-cell *matCellDef="let element"> {{element.ville}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="comptable">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Comptable</th>
+            <td mat-cell *matCellDef="let element"> {{element.comptable.firstName}} {{element.comptable.lastName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element" class="action-link">
+                <button mat-icon-button [routerLink]="'/cabinets/clints/editClient/' + element.id + '/' + cabinetId">
+                    <mat-icon>launch</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" >
+                    <mat-icon>delete_outline</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="'/exercices/exercices/'"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[25, 50, 100]" showFirstLastButtons></mat-paginator>
+</div>
+
+
